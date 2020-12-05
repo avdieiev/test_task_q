@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SingleProject } from 'components/SingleProject';
 import { default as json } from "./user_projects.json"
 import { IProject, IProjectWithId, IUpdateJSON, IUserProjects } from 'components/UserProjects/types';
+import './index.css'
 
 
 export const UserProjects: React.FC = (props) => {
@@ -45,7 +46,9 @@ export const UserProjects: React.FC = (props) => {
     <section className="user-projects">
       <form>
         {isJsonView ? (
-          { data }
+          <div className="JSON">
+            {JSON.stringify(data, null, 2)}
+          </div>
         ) : (
             <div className="workspace">
               <div className="name">
@@ -82,7 +85,7 @@ export const UserProjects: React.FC = (props) => {
           )}
         <div className="controls">
           <button type="button" className="json-view" onClick={() => setJsonView(!isJsonView)}>
-            View form JSON
+            View form {isJsonView ? '' : 'JSON'}
           </button>
           <button type="button">Cancel</button>
           <button onClick={() => { }}>Save</button>
