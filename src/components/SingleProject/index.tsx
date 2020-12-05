@@ -22,7 +22,14 @@ export const SingleProject: React.FC<ProjectProps> = (props) => {
       </div>
       <div className="project-details">
         Details
-        <textarea onChange={() => { }} value={description} />
+        <textarea
+          onChange={e => onProjectChange({
+            ...receivedProject,
+            description: e.target.value,
+            id
+          })}
+          value={description}
+        />
       </div>
       <div className="project-duration">
         Duration
